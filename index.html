@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Web Components组件化开发</title>
+  </head>
+  <body>
+    <div id="my-app"></div>
+
+    <script type="module">
+      import ShadowVue from "./src/core/ShadowVue.js";
+      import Link from "./src/pages/components/Link.js";
+      import Home from "./src/pages/components/Home.js";
+      import About from "./src/pages/components/About.js";
+
+      const shadowVue = new ShadowVue({
+        el: "#my-app",
+        data: {
+          message: "Hello, ShadowVue!",
+        },
+        template: "<h1>{{ message }}</h1>",
+        components: {
+          "my-app": Home,
+          "my-about": About,
+          "my-link": Link,
+        },
+        routes: {
+          "/": { tag: "my-app" },
+          "/about": { tag: "my-about" },
+        },
+      });
+
+      console.log(shadowVue, "-------shadowVue------");
+    </script>
+  </body>
+</html>
